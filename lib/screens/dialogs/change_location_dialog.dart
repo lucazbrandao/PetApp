@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/color.dart';
-import '../theme/sizes.dart';
+import '../../theme/color.dart';
+import '../../theme/sizes.dart';
 
 class ChangeLocationDialog extends StatefulWidget {
   const ChangeLocationDialog({

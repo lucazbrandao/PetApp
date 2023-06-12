@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../theme/color.dart';
-import '../theme/sizes.dart';
-import '../widgets/textfield/pet_textfield.dart';
+import '../../theme/color.dart';
+import '../../theme/sizes.dart';
+import '../../widgets/textfield/pet_textfield.dart';
 
 class ResetPasswordDialog extends StatelessWidget {
   ResetPasswordDialog({

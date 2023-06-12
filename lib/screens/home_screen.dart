@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:petapp/controllers/home_controller.dart';
 import 'package:petapp/model/pet_category_type.dart';
 import 'package:petapp/model/pet_model.dart';
-import 'package:petapp/screens/change_location_dialog.dart';
+import 'package:petapp/screens/dialogs/change_location_dialog.dart';
 import 'package:petapp/theme/sizes.dart';
 import 'package:petapp/utils/pet_dialog.dart';
 import 'package:petapp/widgets/list/pet_list_item.dart';

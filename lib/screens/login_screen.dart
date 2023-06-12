@@ -5,7 +5,7 @@ import 'package:petapp/widgets/button/pet_button.dart';
 
 import '../utils/pet_dialog.dart';
 import '../widgets/textfield/pet_textfield.dart';
-import 'reset_password_dialog.dart';
+import 'dialogs/reset_password_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -91,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               label: 'ENTRAR',
               onPressed: () async {
                 FocusScope.of(context).unfocus();
-                  Modular.to.navigate('/pethome/');
+                Modular.to.navigate('/pethome/');
               },
             ),
             sizedBox20,
