@@ -1,0 +1,28 @@
+# Arquivos gerados pelo Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub/
+build/
+flutter_service_worker.js
+
+# Dependências gerenciadas pelo pub
+.dart_tool/
+.packages
+.pub/
+
+# Arquivos de configuração
+*.iml
+.idea/
+.vscode/
+
+# Arquivos de build do Android
+build/
+.gradle/
+local.properties
+
+# Arquivos de build do iOS
+Pods/
+ios/Pods/
+ios/Podfile.lock
