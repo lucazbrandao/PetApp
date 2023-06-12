@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:petapp/model/pet_model.dart';
 import 'package:petapp/model/pet_owner_model.dart';
+import 'package:petapp/screens/dialogs/pet_owner_contact_dialog.dart';
 import 'package:petapp/theme/sizes.dart';
 import 'package:petapp/utils/data.dart';
+import 'package:petapp/utils/pet_dialog.dart';
 import 'package:petapp/widgets/button/pet_button.dart';
 
 import '../model/pet_type.dart';
@@ -218,7 +220,19 @@ class _PetDetailsScreenState extends State<PetDetailsScreen> {
             Padding(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, top: 30, bottom: 40),
-              child: PetButton(label: 'VER CONTATO', onPressed: () {}),
+              child: PetButton(
+                label: 'VER INFORMAÇÕES',
+                onPressed: () {
+                  showPetDialog(
+                    context,
+                    'Informações de Contato',
+                    PetOwnerContactDialog(
+                      socialMediaDescription: petOwner.socialMediaDescription,
+                      phoneNumber: petOwner.phoneNumber,
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

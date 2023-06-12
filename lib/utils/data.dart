@@ -48,8 +48,8 @@ final defaultOwner = PetOwnerModel(
   name: 'Lucas Brandão',
   bioDescription:
       'Amo muito os animais!\nPreciso adotar meu pet pois minha condição finaceira apertou muito e estou de mudança para um local onde é proibido animais :(',
-  phoneNumber: '32912341234',
-  socialMediaDescription: '',
+  phoneNumber: '(32) 91234-1234',
+  socialMediaDescription: 'Instagram: @lucazbrand\nFacebook: @lucasbrandao',
 );
 
 List petAdoptionList = [
