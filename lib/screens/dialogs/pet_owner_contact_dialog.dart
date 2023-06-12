@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petapp/theme/color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PetOwnerContactDialog extends StatelessWidget {
   final String socialMediaDescription;
@@ -39,11 +40,25 @@ class PetOwnerContactDialog extends StatelessWidget {
                 Icons.call,
                 color: AppColor.secondary,
               ),
-              onPressed: () {},
+              onPressed: () {
+                _launchPhone(phoneNumber);
+              },
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _launchPhone(String phoneNumber) async {
+    String url = 'tel:$phoneNumber';
+    final uri = Uri(path: url);
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }
