@@ -8,12 +8,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "badges",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/badges-2.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -150,18 +144,6 @@
       "rootUri": "file:///Users/universe/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "glassmorphism_ui",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/glassmorphism_ui-0.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "google_fonts",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/google_fonts-2.3.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "http",
@@ -464,7 +446,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-12T23:11:00.348829Z",
+  "generated": "2023-06-12T23:18:27.531653Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }
