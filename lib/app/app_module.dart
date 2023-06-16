@@ -3,6 +3,7 @@ import 'package:petapp/controllers/bottom_navbar_controller.dart';
 import 'package:petapp/controllers/home_controller.dart';
 import 'package:petapp/screens/home_screen.dart';
 import 'package:petapp/screens/login_screen.dart';
+import 'package:petapp/screens/pet_adoption_screen.dart';
 import 'package:petapp/screens/pet_details_screen.dart';
 import 'package:petapp/screens/register_screen.dart';
 
@@ -24,9 +25,12 @@ class AppModule extends Module {
           child: (context, args) => const RouterOutletScreen(),
           children: [
             ChildRoute('/', child: (_, __) => HomeScreen()),
+            ChildRoute('/adoption', child: (_, __) => PetAdoptionScreen()),
           ],
         ),
-        ChildRoute('/petdetails/:advId',
-            child: (_, args) => PetDetailsScreen(advId: args.params['advId'])),
+        ChildRoute(
+          '/petdetails/:advId',
+          child: (_, args) => PetDetailsScreen(advId: args.params['advId']),
+        ),
       ];
 }

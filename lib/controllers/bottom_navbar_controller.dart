@@ -1,8 +1,9 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rxdart/rxdart.dart';
 
 class BottomNavigationBarController {
-
-  final BehaviorSubject<int> _navigationController = BehaviorSubject<int>.seeded(0);
+  final BehaviorSubject<int> _navigationController =
+      BehaviorSubject<int>.seeded(0);
 
   Stream<int> get getNavigationController => _navigationController.stream;
 
@@ -11,13 +12,13 @@ class BottomNavigationBarController {
 
     switch (page) {
       case 0:
-        // Modular.to.navigate('/dashboard/menu');
+        Modular.to.navigate('/pethome/');
         break;
       case 1:
-        // Modular.to.navigate('/dashboard/home');
+        Modular.to.navigate('/pethome/adoption');
         break;
       default:
-        // Modular.to.navigate('/dashboard/settings');
+      // Modular.to.navigate('/pethome/settings');
     }
   }
 

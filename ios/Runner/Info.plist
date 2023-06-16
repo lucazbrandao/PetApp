@@ -47,5 +47,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos acessar sua galeria para selecionar fotos do seu pet.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>your usage description here</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>your usage description here</string>
+	
 </dict>
 </plist>
