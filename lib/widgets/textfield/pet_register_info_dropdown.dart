@@ -7,9 +7,14 @@ import '../../theme/sizes.dart';
 class PetRegisterInfoDropdown<T> extends StatefulWidget {
   final String label;
   final List<DropdownMenuItem<T>> items;
+  final Function(dynamic) onValueSelected;
 
-  const PetRegisterInfoDropdown(
-      {super.key, required this.label, required this.items});
+  const PetRegisterInfoDropdown({
+    super.key,
+    required this.label,
+    required this.items,
+    required this.onValueSelected,
+  });
 
   @override
   State<PetRegisterInfoDropdown> createState() =>
@@ -31,6 +36,7 @@ class _PetRegisterInfoDropdownState extends State<PetRegisterInfoDropdown> {
         ),
         sizedBox5,
         DropdownButtonHideUnderline(
+          key: widget.key,
           child: DropdownButtonFormField2(
             decoration: InputDecoration(
               isDense: true,
@@ -56,7 +62,14 @@ class _PetRegisterInfoDropdownState extends State<PetRegisterInfoDropdown> {
             onChanged: (value) {
               setState(() {
                 selectedOption = value;
+                widget.onValueSelected(value);
               });
+            },
+            validator: (value) {
+              if (value == null) {
+                return 'Campo obrigatório';
+              }
+              return null;
             },
             buttonStyleData: const ButtonStyleData(
               padding: EdgeInsets.symmetric(horizontal: 12),

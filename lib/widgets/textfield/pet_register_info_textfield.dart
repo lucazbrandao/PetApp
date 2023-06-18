@@ -7,11 +7,13 @@ class PetRegisterInfoTextfield extends StatelessWidget {
   final String label;
   final String hint;
   final bool isBioField;
+  final TextEditingController controller;
 
   const PetRegisterInfoTextfield({
     super.key,
     required this.label,
     required this.hint,
+    required this.controller,
     this.isBioField = false,
   });
 
@@ -27,9 +29,10 @@ class PetRegisterInfoTextfield extends StatelessWidget {
         ),
         sizedBox5,
         TextFormField(
+          key: key,
+          controller: controller,
           cursorColor: AppColor.secondary,
           decoration: InputDecoration(
-            focusColor: Colors.pink,
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColor.secondary),
             ),
@@ -37,6 +40,12 @@ class PetRegisterInfoTextfield extends StatelessWidget {
             hintText: hint,
           ),
           maxLines: isBioField ? 3 : 1,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Campo obrigatório';
+            }
+            return null;
+          },
         ),
       ],
     );
