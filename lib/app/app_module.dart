@@ -6,6 +6,7 @@ import 'package:petapp/screens/login_screen.dart';
 import 'package:petapp/screens/pet_adoption_screen.dart';
 import 'package:petapp/screens/pet_details_screen.dart';
 import 'package:petapp/screens/register_screen.dart';
+import 'package:petapp/screens/settings_screen.dart';
 
 import '../screens/routeroutlet.dart';
 
@@ -26,6 +27,7 @@ class AppModule extends Module {
           children: [
             ChildRoute('/', child: (_, __) => HomeScreen()),
             ChildRoute('/adoption', child: (_, __) => PetAdoptionScreen()),
+            ChildRoute('/settings', child: (_, __) => SettingsScreen()),
           ],
         ),
         ChildRoute(

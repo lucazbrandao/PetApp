@@ -54,21 +54,6 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
               PetAdoptionItem(),
               PetAdoptionItem(),
               PetAdoptionItem(),
-              // SizedBox(
-              //   width: 200,
-              //   child: Expanded(
-              //     // height: 300,
-              //     child: ListView(
-              //       shrinkWrap: true,
-              //       children: [
-              //         PetAdoptionItem(),
-              //         PetAdoptionItem(),
-              //         PetAdoptionItem(),
-              //         PetAdoptionItem(),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

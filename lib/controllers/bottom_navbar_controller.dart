@@ -17,12 +17,16 @@ class BottomNavigationBarController {
       case 1:
         Modular.to.navigate('/pethome/adoption');
         break;
+      case 2:
+        Modular.to.navigate('/pethome/settings');
+        break;
       default:
-      // Modular.to.navigate('/pethome/settings');
+        Modular.to.navigate('/pethome/');
     }
   }
 
   void dispose() {
-    _navigationController.close();
+    _navigationController.sink.add(0);
+    // _navigationController.close();
   }
 }
