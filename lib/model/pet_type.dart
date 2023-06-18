@@ -33,4 +33,21 @@ extension PetTypeFilter on PetType {
         return petCategory == PetCategory.turtle;
     }
   }
+
+  PetCategory getCategory() {
+    switch (this) {
+      case PetType.dog:
+        return PetCategory.dog;
+      case PetType.cat:
+        return PetCategory.cat;
+      case PetType.parrot:
+        return PetCategory.parrot;
+      case PetType.rabbit:
+        return PetCategory.rabbit;
+      case PetType.fish:
+        return PetCategory.fish;
+      case PetType.turtle:
+        return PetCategory.turtle;
+    }
+  }
 }

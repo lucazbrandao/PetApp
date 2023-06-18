@@ -8,13 +8,19 @@ import 'package:petapp/widgets/button/pet_button.dart';
 import 'package:petapp/widgets/button/selected_image_button.dart';
 import 'package:petapp/widgets/textfield/pet_register_info_dropdown.dart';
 
+import '../model/user_pet_adoption_model.dart';
 import '../widgets/button/empty_imageselector_button.dart';
 import '../widgets/textfield/pet_register_info_textfield.dart';
 
 class RegisterPetBottomSheet extends StatefulWidget {
   final VoidCallback closeAction;
+  final UserPetAdoptionModel? userPetAdoption;
 
-  const RegisterPetBottomSheet({super.key, required this.closeAction});
+  const RegisterPetBottomSheet({
+    super.key,
+    required this.closeAction,
+    this.userPetAdoption,
+  });
 
   @override
   State<RegisterPetBottomSheet> createState() => _RegisterPetBottomSheetState();
@@ -33,10 +39,17 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
 
   PetCategory? selectedOptionCategory;
 
-  List<XFile>? _selectedImages;
-
   final _bottomsheetController = RegisterPetBottomSheetController();
   final _formKey = GlobalKey<FormState>();
+
+  var _isEdition = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _isEdition = widget.userPetAdoption != null;
+    _bottomsheetController.checkIsAdvertEdit(widget.userPetAdoption);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +61,7 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Cadastrar Pet',
+                _isEdition ? 'Editar Anúncio' : 'Cadastrar Pet',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -132,8 +145,8 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         ),
                         sizedBox10,
                         PetRegisterInfoTextfield(
-                          controller: _bottomsheetController
-                              .ownerSocialMediaTextController,
+                          controller:
+                              _bottomsheetController.ownerSMTextController,
                           label: 'Mídias Sociais',
                           hint:
                               'Ex: Instagram: @fulano_123\nFacebook: @fulano123',
@@ -142,9 +155,10 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         sizedBox10,
                         PetRegisterInfoDropdown(
                           label: 'Categoria',
+                          initialValue: _bottomsheetController.petCategory,
                           onValueSelected: (value) {
                             _bottomsheetController.petCategory =
-                                (value as PetCategory).name;
+                                (value as PetCategory);
                           },
                           items: listOptionsCategory
                               .map((item) => DropdownMenuItem<PetCategory>(
@@ -161,6 +175,7 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         sizedBox10,
                         PetRegisterInfoDropdown(
                           label: 'Gênero',
+                          initialValue: _bottomsheetController.petGender,
                           onValueSelected: (value) {
                             _bottomsheetController.petGender = value;
                           },
@@ -179,6 +194,7 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         sizedBox10,
                         PetRegisterInfoDropdown(
                           label: 'Pet com vacinas em dia?',
+                          initialValue: _bottomsheetController.petVaccinated,
                           onValueSelected: (value) {
                             _bottomsheetController.petVaccinated = value;
                           },
@@ -197,8 +213,9 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         sizedBox20,
                         SizedBox(
                           height: 200,
-                          child: _selectedImages == null ||
-                                  _selectedImages!.isEmpty
+                          child: _bottomsheetController.selectedImages ==
+                                      null ||
+                                  _bottomsheetController.selectedImages!.isEmpty
                               ? EmptyImagesSelectedContainer(
                                   onTap: () async {
                                     _selectImages();
@@ -207,14 +224,18 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                               : ListView.builder(
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: _selectedImages?.length ?? 0,
+                                  itemCount: _bottomsheetController
+                                          .selectedImages?.length ??
+                                      0,
                                   itemBuilder: (_, index) {
                                     return SelectedImageButton(
-                                      imageUrl:
-                                          _selectedImages?[index].path ?? '',
+                                      imageUrl: _bottomsheetController
+                                              .selectedImages?[index].path ??
+                                          '',
                                       onClosePressed: () {
                                         setState(() {
-                                          _selectedImages?.removeAt(index);
+                                          _bottomsheetController.selectedImages
+                                              ?.removeAt(index);
                                         });
                                       },
                                     );
@@ -249,7 +270,7 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
       final List<XFile> pickedFileList = await picker.pickMultiImage();
 
       setState(() {
-        _selectedImages = pickedFileList;
+        _bottomsheetController.selectedImages = pickedFileList;
       });
     } on Exception {
       ScaffoldMessenger.of(context).showSnackBar(

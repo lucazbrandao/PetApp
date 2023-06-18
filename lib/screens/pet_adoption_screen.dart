@@ -30,7 +30,7 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
         ),
         icon: Icon(Icons.add, size: 30),
         onPressed: () {
-          addPetBottomSheet();
+          openRegisterPetBottomSheet();
         },
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -64,7 +64,10 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
                   itemBuilder: (_, index) {
                     return PetAdoptionItem(
                       userPetAdoptionModel: userPetAdoptionList[index],
-                      onEdit: () {},
+                      onEdit: () {
+                        openRegisterPetBottomSheet(
+                            userPetAdoptionModel: userPetAdoptionList[index]);
+                      },
                       onDelete: () {
                         _showDeleteConfirmationDialog(
                           petName: userPetAdoptionList[index].name,
@@ -86,10 +89,10 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
     );
   }
 
-  void addPetBottomSheet() {
+  void openRegisterPetBottomSheet(
+      {UserPetAdoptionModel? userPetAdoptionModel}) {
     showModalBottomSheet(
       context: context,
-      showDragHandle: false,
       isScrollControlled: true,
       useSafeArea: true,
       shape: RoundedRectangleBorder(
@@ -101,6 +104,7 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
       builder: (BuildContext context) {
         return RegisterPetBottomSheet(
           closeAction: () => Navigator.pop(context),
+          userPetAdoption: userPetAdoptionModel,
         );
       },
     );

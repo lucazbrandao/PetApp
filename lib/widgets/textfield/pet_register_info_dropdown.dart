@@ -8,12 +8,14 @@ class PetRegisterInfoDropdown<T> extends StatefulWidget {
   final String label;
   final List<DropdownMenuItem<T>> items;
   final Function(dynamic) onValueSelected;
+  final T? initialValue;
 
   const PetRegisterInfoDropdown({
     super.key,
     required this.label,
     required this.items,
     required this.onValueSelected,
+    this.initialValue,
   });
 
   @override
@@ -22,7 +24,13 @@ class PetRegisterInfoDropdown<T> extends StatefulWidget {
 }
 
 class _PetRegisterInfoDropdownState extends State<PetRegisterInfoDropdown> {
-  var selectedOption = null;
+  var _selectedOption;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedOption = widget.initialValue;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +66,10 @@ class _PetRegisterInfoDropdownState extends State<PetRegisterInfoDropdown> {
               ),
             ),
             items: widget.items,
-            value: selectedOption,
+            value: _selectedOption,
             onChanged: (value) {
               setState(() {
-                selectedOption = value;
+                _selectedOption = value;
                 widget.onValueSelected(value);
               });
             },
