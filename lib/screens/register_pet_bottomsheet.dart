@@ -26,8 +26,9 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
   final listOptionsGender = ['Macho', 'Fêmea'];
   String? selectedOptionGender;
 
-  final listOptionsCategory =
-      categ.where((e) => e.category != PetCategory.all).toList();
+  final listOptionsCategory = petCategoryStaticList
+      .where((e) => e.category != PetCategory.all)
+      .toList();
   PetCategory? selectedOptionCategory;
 
   List<XFile>? _selectedImages;

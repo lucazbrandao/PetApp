@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:petapp/model/user_pet_adoption_model.dart';
 import 'package:petapp/screens/register_pet_bottomsheet.dart';
 import 'package:petapp/theme/color.dart';
 import 'package:petapp/theme/sizes.dart';
+import 'package:petapp/utils/data.dart';
 import 'package:petapp/widgets/list/pet_adoption_item.dart';
+
+import '../widgets/dialog/delete_confirmation_dialog.dart';
 
 class PetAdoptionScreen extends StatefulWidget {
   const PetAdoptionScreen({super.key});
@@ -12,6 +16,9 @@ class PetAdoptionScreen extends StatefulWidget {
 }
 
 class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
+  final userPetAdoptionList =
+      List<UserPetAdoptionModel>.from(userPetAdoptionStaticList);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +57,28 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
                 ),
               ),
               sizedBox20,
-              PetAdoptionItem(),
-              PetAdoptionItem(),
-              PetAdoptionItem(),
-              PetAdoptionItem(),
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: userPetAdoptionList.length,
+                  itemBuilder: (_, index) {
+                    return PetAdoptionItem(
+                      userPetAdoptionModel: userPetAdoptionList[index],
+                      onEdit: () {},
+                      onDelete: () {
+                        _showDeleteConfirmationDialog(
+                          petName: userPetAdoptionList[index].name,
+                          onConfirm: () {
+                            setState(() {
+                              userPetAdoptionList.removeAt(index);
+                            });
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -76,6 +101,21 @@ class _PetAdoptionScreenState extends State<PetAdoptionScreen> {
       builder: (BuildContext context) {
         return RegisterPetBottomSheet(
           closeAction: () => Navigator.pop(context),
+        );
+      },
+    );
+  }
+
+  Future<bool?> _showDeleteConfirmationDialog({
+    required String petName,
+    required VoidCallback onConfirm,
+  }) {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return DeleteConfirmationDialog(
+          petName: petName,
+          onConfirm: onConfirm,
         );
       },
     );

@@ -1,12 +1,13 @@
 import 'package:petapp/model/pet_model.dart';
 import 'package:petapp/model/pet_owner_model.dart';
 import 'package:petapp/model/pet_type.dart';
+import 'package:petapp/model/user_pet_adoption_model.dart';
 
 import '../model/pet_category_type.dart';
 
 var profile = "https://avatars.githubusercontent.com/u/32471055?v=4";
 
-List<PetCategoryType> categ = [
+List<PetCategoryType> petCategoryStaticList = [
   PetCategoryType(
     category: PetCategory.all,
     name: "Todos",
@@ -281,6 +282,27 @@ List petAdoptionList = [
       ],
     ),
   },
+];
+
+List<UserPetAdoptionModel> userPetAdoptionStaticList = [
+  UserPetAdoptionModel(
+    advId: 7,
+    name: 'Clinkz',
+    race: 'Labrador',
+    type: PetType.dog,
+  ),
+  UserPetAdoptionModel(
+    advId: 8,
+    name: 'Nakita',
+    race: 'Persa',
+    type: PetType.cat,
+  ),
+  UserPetAdoptionModel(
+    advId: 9,
+    name: 'Luna',
+    race: 'Vira Lata',
+    type: PetType.cat,
+  ),
 ];
 
 PetOwnerModel getPetOwnerByAdvId(String id) {

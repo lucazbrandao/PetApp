@@ -13,7 +13,7 @@ class HomeController {
   set _filterPetList(value) => _pets.sink.add(value);
 
   final BehaviorSubject<List<PetCategoryType>> _petCategories =
-      BehaviorSubject<List<PetCategoryType>>.seeded(categ);
+      BehaviorSubject<List<PetCategoryType>>.seeded(petCategoryStaticList);
   get petCategories => _petCategories.stream;
 
   int _selectedPetCategoryIndex = 0;
