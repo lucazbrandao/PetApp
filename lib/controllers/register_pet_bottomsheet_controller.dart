@@ -16,11 +16,12 @@ class RegisterPetBottomSheetController {
   final TextEditingController petColorTextController = TextEditingController();
   final TextEditingController ownerBioTextController = TextEditingController();
   final TextEditingController ownerSMTextController = TextEditingController();
-  String? petGender = null;
+  String? petGender;
   String? petVaccinated;
   PetCategory? petCategory;
 
-  List<XFile>? selectedImages;
+  List<XFile> selectedImages = [];
+  List<String> advImages = [];
 
   void submiteForm() {
     var registerJson = {
@@ -34,7 +35,7 @@ class RegisterPetBottomSheetController {
       'petCategory': petCategory,
       'ownerBio': ownerBioTextController.text,
       'ownerSocialMedia': ownerSMTextController.text,
-      'petImages': selectedImages?.map((e) => e.path).toList()
+      'petImages': selectedImages.map((e) => e.path).toList()
     };
     debugPrint(registerJson.toString());
   }
@@ -59,5 +60,6 @@ class RegisterPetBottomSheetController {
     petGender = petModel.gender == PetGender.male ? 'Macho' : 'Fêmea';
     petCategory = petModel.type.getCategory();
     petVaccinated = petModel.vaccinated ? 'Sim' : 'Não';
+    advImages = petModel.images;
   }
 }

@@ -213,10 +213,9 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                         sizedBox20,
                         SizedBox(
                           height: 200,
-                          child: _bottomsheetController.selectedImages ==
-                                      null ||
-                                  _bottomsheetController.selectedImages!.isEmpty
+                          child: _emptyImagesContainerConditional()
                               ? EmptyImagesSelectedContainer(
+                                  isEdition: _isEdition,
                                   onTap: () async {
                                     _selectImages();
                                   },
@@ -224,18 +223,15 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
                               : ListView.builder(
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: _bottomsheetController
-                                          .selectedImages?.length ??
-                                      0,
+                                  itemCount: _imagesItemCount(),
                                   itemBuilder: (_, index) {
                                     return SelectedImageButton(
-                                      imageUrl: _bottomsheetController
-                                              .selectedImages?[index].path ??
-                                          '',
+                                      isEdition: _isEdition,
+                                      imageUrl: _imageUrlByIndex(index),
                                       onClosePressed: () {
                                         setState(() {
                                           _bottomsheetController.selectedImages
-                                              ?.removeAt(index);
+                                              .removeAt(index);
                                         });
                                       },
                                     );
@@ -281,5 +277,22 @@ class _RegisterPetBottomSheetState extends State<RegisterPetBottomSheet> {
         ),
       );
     }
+  }
+
+  bool _emptyImagesContainerConditional() {
+    return (_bottomsheetController.selectedImages.isEmpty && !_isEdition) ||
+        (_isEdition && _bottomsheetController.advImages.isEmpty);
+  }
+
+  int _imagesItemCount() {
+    return _isEdition
+        ? _bottomsheetController.advImages.length
+        : _bottomsheetController.selectedImages.length;
+  }
+
+  String _imageUrlByIndex(int index) {
+    return _isEdition
+        ? _bottomsheetController.advImages[index]
+        : _bottomsheetController.selectedImages[index].path;
   }
 }

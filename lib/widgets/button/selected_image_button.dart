@@ -7,11 +7,13 @@ import '../../theme/color.dart';
 class SelectedImageButton extends StatelessWidget {
   final String imageUrl;
   final VoidCallback onClosePressed;
+  final bool isEdition;
 
   const SelectedImageButton({
     super.key,
     required this.imageUrl,
     required this.onClosePressed,
+    required this.isEdition,
   });
 
   @override
@@ -24,20 +26,35 @@ class SelectedImageButton extends StatelessWidget {
           height: 200,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.file(
-              File(imageUrl),
-              fit: BoxFit.fitHeight,
-              errorBuilder: (BuildContext context, Object error,
-                      StackTrace? stackTrace) =>
-                  const Center(child: Text('This image type is not supported')),
-            ),
+            child: isEdition
+                ? Image.network(imageUrl, fit: BoxFit.fill)
+                : Image.file(
+                    File(imageUrl),
+                    fit: BoxFit.fill,
+                    errorBuilder: (BuildContext context, Object error,
+                            StackTrace? stackTrace) =>
+                        const Center(
+                            child: Text('This image type is not supported')),
+                  ),
           ),
         ),
         Positioned(
           top: 10,
           right: 20,
           child: InkWell(
-            onTap: onClosePressed,
+            onTap: () {
+              if (isEdition) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Não é possível editar imagens de um anúncio criado',
+                    ),
+                  ),
+                );
+              } else {
+                onClosePressed();
+              }
+            },
             child: Container(
               width: 30,
               height: 30,
