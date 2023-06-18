@@ -12,21 +12,20 @@ class BottomNavigationBarController {
 
     switch (page) {
       case 0:
-        Modular.to.navigate('/pethome/');
+        Modular.to.navigate('/petmodule/home');
         break;
       case 1:
-        Modular.to.navigate('/pethome/adoption');
+        Modular.to.navigate('/petmodule/adoption');
         break;
       case 2:
-        Modular.to.navigate('/pethome/settings');
+        Modular.to.navigate('/petmodule/settings');
         break;
       default:
-        Modular.to.navigate('/pethome/');
+        Modular.to.navigate('/petmodule/home');
     }
   }
 
   void dispose() {
-    _navigationController.sink.add(0);
-    // _navigationController.close();
+    _navigationController.close();
   }
 }

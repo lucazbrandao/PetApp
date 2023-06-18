@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               label: 'ENTRAR',
               onPressed: () async {
                 FocusScope.of(context).unfocus();
-                Modular.to.navigate('/pethome/');
+                Modular.to.navigate('/petmodule/home');
               },
             ),
             sizedBox20,
