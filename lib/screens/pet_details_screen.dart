@@ -106,9 +106,6 @@ class _PetDetailsScreenState extends State<PetDetailsScreen> {
                 Padding(
                   padding: EdgeInsets.only(top: 40.0, left: 10.0),
                   child: IconButton(
-                    // onPressed: () {
-                    //   Modular.to.navigate('/pet/home');
-                    // },
                     onPressed: () => Modular.to.pop(),
                     icon: Icon(Icons.arrow_back_ios),
                     color: Colors.white,

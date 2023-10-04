@@ -16,7 +16,6 @@ class PetApp extends StatelessWidget {
       ),
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
-      // home: const RootApp(),
     );
   }
 }
