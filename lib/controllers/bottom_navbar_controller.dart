@@ -12,16 +12,16 @@ class BottomNavigationBarController {
 
     switch (page) {
       case 0:
-        Modular.to.navigate('/petmodule/home');
+        Modular.to.navigate('/pet/home');
         break;
       case 1:
-        Modular.to.navigate('/petmodule/adoption');
+        Modular.to.navigate('/pet/adoption');
         break;
       case 2:
-        Modular.to.navigate('/petmodule/settings');
+        Modular.to.navigate('/pet/settings');
         break;
       default:
-        Modular.to.navigate('/petmodule/home');
+        Modular.to.navigate('/pet/home');
     }
   }
 
