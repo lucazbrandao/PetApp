@@ -113,7 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (_, index) {
           return GestureDetector(
             onTap: () {
-              Modular.to.pushNamed('/petdetails/${pets[index].advId}');
+              Modular.to.pushNamed(
+                  '/pet/adoption/petdetails/${pets[index].advId}',
+                  forRoot: true);
             },
             child: PetListItem(pet: pets[index]),
           );

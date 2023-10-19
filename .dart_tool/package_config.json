@@ -8,6 +8,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "auto_injector",
+      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/auto_injector-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -147,15 +153,9 @@
     },
     {
       "name": "flutter_modular",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/flutter_modular-5.0.3",
+      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/flutter_modular-6.3.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "flutter_modular_annotations",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/flutter_modular_annotations-0.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -273,15 +273,9 @@
     },
     {
       "name": "modular_core",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/modular_core-2.0.3+1",
+      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/modular_core-3.3.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "modular_interfaces",
-      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/modular_interfaces-2.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "octo_image",
@@ -372,6 +366,12 @@
       "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "result_dart",
+      "rootUri": "file:///Users/universe/.pub-cache/hosted/pub.dev/result_dart-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "rxdart",
@@ -530,7 +530,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-14T00:24:28.139777Z",
+  "generated": "2023-10-19T03:13:17.227394Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }
