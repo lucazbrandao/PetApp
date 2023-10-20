@@ -5,15 +5,14 @@ import '../theme/sizes.dart';
 import '../widgets/button/pet_button.dart';
 import '../widgets/textfield/pet_textfield.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -83,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 label: 'CRIAR CONTA',
                 onPressed: () async {
                   FocusScope.of(context).unfocus();
-                    Modular.to.navigate('/home');
+                  Modular.to.navigate('/home');
                 },
               ),
               sizedBox20,

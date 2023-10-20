@@ -11,8 +11,8 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child('/', child: (context) => LoginPage());
-    r.child('/register', child: (context) => RegisterPage());
+    r.child('/', child: (context) => LoginScreen());
+    r.child('/register', child: (context) => RegisterScreen());
     r.child(
       '/pet',
       child: (context) => const RouterOutletScreen(),
