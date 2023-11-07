@@ -62,4 +62,10 @@ class HomeController {
   PetCategory _getPetSelectedCategory() {
     return _petCategories.value![_selectedPetCategoryIndex].category;
   }
+
+  void dispose() {
+    _pets.close();
+    _petCategories.close();
+    textSearchController.dispose();
+  }
 }

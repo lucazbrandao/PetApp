@@ -23,6 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final homeController = Modular.get<HomeController>();
 
   @override
+  void dispose() {
+    super.dispose();
+    homeController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
