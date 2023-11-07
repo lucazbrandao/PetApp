@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 label: 'CRIAR CONTA',
                 onPressed: () async {
                   FocusScope.of(context).unfocus();
-                  Modular.to.navigate('/home');
+                  Modular.to.navigate('/pet/home');
                 },
               ),
               sizedBox20,
